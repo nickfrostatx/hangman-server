@@ -1,0 +1,12 @@
+{
+  "name": "hangman-server",
+  "version": "1.0.0",
+  "description": "Hangman Server",
+  "main": "start.js",
+  "author": "Nick Frost <nickfrostatx@gmail.com>",
+  "repository": "https://github.com/nickfrostatx/hangman-server",
+  "dependencies": {
+    "express": "^4.11.2",
+    "redis": "^0.12.1"
+  }
+}
