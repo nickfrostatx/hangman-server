@@ -49,6 +49,9 @@ Player.prototype.move = function(space) {
   if (winners) {
     this.emitter.emit('win', winners);
     this.opponent.emitter.emit('loss', winners);
+  } else if (this.game.isDraw()) {
+    this.emitter.emit('draw');
+    this.opponent.emitter.emit('draw');
   } else {
     this.opponent.emitter.emit('move', space);
   };

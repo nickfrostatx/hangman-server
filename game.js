@@ -71,6 +71,15 @@ Game.prototype.checkWinners = function(player) {
   return winningSpaces;
 };
 
+Game.prototype.isDraw = function() {
+  for (var i = 0; i < 9; i++) {
+    if (this.spaces[i] == 0) {
+      return false;
+    };
+  };
+  return true;
+};
+
 module.exports = function() {
   return new Game();
 };

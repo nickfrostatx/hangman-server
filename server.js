@@ -44,6 +44,10 @@ module.exports = function() {
       sendCommand('loss', winners);
     });
 
+    p.emitter.on('draw', function() {
+      sendCommand('draw');
+    });
+
     p.postConnect();
   });
 

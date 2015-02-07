@@ -37,6 +37,10 @@ module.exports = function(listen) {
       socket.emit('loss', winners);
     });
 
+    p.emitter.on('draw', function() {
+      socket.emit('draw');
+    });
+
     p.postConnect();
   });
 
