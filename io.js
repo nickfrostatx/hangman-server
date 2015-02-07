@@ -29,6 +29,14 @@ module.exports = function(listen) {
       socket.emit('opponent left');
     });
 
+    p.emitter.on('win', function(winners) {
+      socket.emit('win', winners);
+    });
+
+    p.emitter.on('loss', function(winners) {
+      socket.emit('loss', winners);
+    });
+
     p.postConnect();
   });
 

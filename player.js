@@ -45,7 +45,13 @@ Player.prototype.move = function(space) {
     return false;
   };
 
-  this.opponent.emitter.emit('move', space);
+  var winners = this.game.checkWinners(this.playerID);
+  if (winners) {
+    this.emitter.emit('win', winners);
+    this.opponent.emitter.emit('loss', winners);
+  } else {
+    this.opponent.emitter.emit('move', space);
+  };
 };
 
 

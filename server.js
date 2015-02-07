@@ -36,6 +36,14 @@ module.exports = function() {
       sendCommand('opponent left');
     });
 
+    p.emitter.on('win', function(winners) {
+      sendCommand('win', winners);
+    });
+
+    p.emitter.on('loss', function(winners) {
+      sendCommand('loss', winners);
+    });
+
     p.postConnect();
   });
 
