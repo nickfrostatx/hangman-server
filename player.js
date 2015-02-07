@@ -23,14 +23,12 @@ Player.prototype.postConnect = function() {
 };
 
 Player.prototype.disconnect = function() {
-  if (this.opponent === null) {
-    waiting = null;
-  } else {
-    waiting = this.opponent;
+  if (this.opponent !== null) {
     this.opponent.playerID = null;
     this.opponent.opponent = null;
     this.opponent.game = null;
     this.opponent.emitter.emit('opponent left');
+    this.opponent.postConnect();
   };
 };
 
