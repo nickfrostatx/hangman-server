@@ -19,7 +19,7 @@ module.exports = function() {
     var sendCommand = function(cmd, data) {
       var payload = cmd;
       if (data !== undefined) {
-        cmd += ' ' + data;
+        payload += ' ' + data;
       };
       socket.write(payload + '\n');
     };
