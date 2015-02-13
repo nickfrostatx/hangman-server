@@ -37,11 +37,11 @@ module.exports = function() {
     });
 
     p.emitter.on('win', function(winners) {
-      sendCommand('win', winners);
+      sendCommand('win', winners.join(''));
     });
 
     p.emitter.on('loss', function(winners) {
-      sendCommand('loss', winners);
+      sendCommand('loss', winners.join(''));
     });
 
     p.emitter.on('draw', function() {
