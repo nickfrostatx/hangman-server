@@ -17,14 +17,11 @@ module.exports = function() {
     });
 
     var sendCommand = function(cmd, data) {
-      var obj = {command: cmd};
+      var payload = cmd;
       if (data !== undefined) {
-        obj.data = data;
+        cmd += ' ' + data;
       };
-      var payload = JSON.stringify(obj);
-      var buf = new Buffer(2);
-      buf.writeUInt16BE(payload.length, 0);
-      socket.write(buf + payload);
+      socket.write(payload + '\n');
     };
 
     p.emitter.on('newgame', function(turn) {
@@ -36,7 +33,7 @@ module.exports = function() {
     });
 
     p.emitter.on('opponent left', function() {
-      sendCommand('opponent left');
+      sendCommand('left');
     });
 
     p.emitter.on('win', function(winners) {
