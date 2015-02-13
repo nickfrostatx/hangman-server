@@ -23,7 +23,7 @@ module.exports = function() {
       };
       var payload = JSON.stringify(obj);
       var buf = new Buffer(2);
-      buf.writeUInt16BE(payload.length);
+      buf.writeUInt16BE(payload.length, 0);
       socket.write(buf + payload);
     };
 
