@@ -17,11 +17,14 @@ module.exports = function() {
     });
 
     var sendCommand = function(cmd, data) {
-      var payload = {command: cmd};
+      var obj = {command: cmd};
       if (data !== undefined) {
-        payload.data = data;
+        obj.data = data;
       };
-      socket.write(JSON.stringify(payload));
+      var payload = JSON.stringify(obj);
+      var buf = new Buffer(2);
+      buf.writeUInt16BE(payload.length);
+      socket.write(buf + payload);
     };
 
     p.emitter.on('newgame', function(turn) {
